@@ -57,22 +57,11 @@ export const create = async () => {
   // set the view engine to ejs
   app.set('view engine', 'ejs');
 
-  // app.get('/', (req, res) => {
-  //   // Retrieve the x-ms-client-principal-id header
-  //   const clientPrincipalName = req.headers['X-MS-CLIENT-PRINCIPAL-NAME'];
-
-  //   if (clientPrincipalId) {
-  //       res.send(`Client Principal ID: ${clientPrincipalId}`);
-  //   } else {
-  //       res.send('x-ms-client-principal-id header not found. Ensure Easy Auth is configured.');
-  //   }
-  // });
-
   // Home page
   app.get('/', async (req, res) => {
     
     try {
-
+      
       // Data for rendered view
       const dataForView = {
         error: undefined,

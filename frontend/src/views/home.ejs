@@ -14,7 +14,13 @@
 </style>
 
 <body>
-
+  <script>
+    if (accessToken){
+      document.getElementById("content").innerHTML = `<p>Welcome, ${user}!</p>`;
+    } else {
+      document.getElementById("content").innerHTML = `<p>Please log in.</p>`;
+    }
+  </script>
   <h1>Easy auth sample application</h1>
   <br><br>
   <% if (error) { %>
@@ -24,9 +30,9 @@
         <%= error %>
     </p>
 
-    <% } else { %>
+    <% } else {  %>
 
-      <h3>Access token</h3>
+      <h3>Bearer token</h3>
       <p>
           <div><%= user %></div>
           <div><%= scope %></div>
