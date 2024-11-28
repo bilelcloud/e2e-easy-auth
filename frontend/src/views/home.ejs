@@ -14,10 +14,30 @@
 </style>
 
 <body>
+  <h1 style="background-color: blue;color: white;line-height:300%">Easy auth sample application</h1>
+  <br><br>
+  <% if (error) { %>
 
-  <h1>Easy auth - Get Profile from API server - 1</h1>
+    <h3>Error</h3>
+    <p>
+        <%= error %>
+    </p>
 
-  <p><a href="/get-profile">Get user's profile</a> from server API</p>
+    <% } if(accessToken) {  %>
+
+      <h3>Bearer token</h3>
+      <p>
+        <div><%= user %></div>
+        <div><%= scope %></div>
+        <%= accessToken %>
+      </p>
+    <% } else { %>
+      <h3>App Service Authentication is not enabled !</h3>
+      <% } %>
+        <br><br>
+
+
+  <!--<p><a href="/get-profile">Get user's profile</a> from server API</p>-->
   <br><br><br><br>
   <div class="resources">
     <details>

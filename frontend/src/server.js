@@ -58,8 +58,28 @@ export const create = async () => {
   app.set('view engine', 'ejs');
 
   // Home page
-  app.get('/', async (_, res) => {
-    res.render(`${__dirname}/views/home`);
+  app.get('/', async (req, res) => {
+    
+    try {
+      
+      // Data for rendered view
+      const dataForView = {
+        error: undefined,
+        accessToken: req.headers['x-ms-token-aad-access-token'],
+        scope: req.tokenMiddleware?.decoded?.scp, 
+        user: req.tokenMiddleware?.decoded?.name,
+        tokenMiddleware: sortJson(req.tokenMiddleware),
+        headers: sortJson(req.headers),
+
+        env: sortJson(process.env)
+      };
+      res.render(`${__dirname}/views/home`, dataForView);
+      
+    } catch (error) {
+
+      // Failure - View
+      res.render(`${__dirname}/views/home`, { error })
+    }
   });
 
   // Access token from injected header
