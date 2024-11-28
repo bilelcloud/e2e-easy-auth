@@ -57,9 +57,40 @@ export const create = async () => {
   // set the view engine to ejs
   app.set('view engine', 'ejs');
 
+  // app.get('/', (req, res) => {
+  //   // Retrieve the x-ms-client-principal-id header
+  //   const clientPrincipalName = req.headers['X-MS-CLIENT-PRINCIPAL-NAME'];
+
+  //   if (clientPrincipalId) {
+  //       res.send(`Client Principal ID: ${clientPrincipalId}`);
+  //   } else {
+  //       res.send('x-ms-client-principal-id header not found. Ensure Easy Auth is configured.');
+  //   }
+  // });
+
   // Home page
-  app.get('/', async (_, res) => {
-    res.render(`${__dirname}/views/home`);
+  app.get('/', async (req, res) => {
+    
+    try {
+
+      // Data for rendered view
+      const dataForView = {
+        error: undefined,
+        accessToken: req.headers['x-ms-token-aad-access-token'],
+        scope: req.tokenMiddleware?.decoded?.scp, 
+        user: req.tokenMiddleware?.decoded?.name,
+        tokenMiddleware: sortJson(req.tokenMiddleware),
+        headers: sortJson(req.headers),
+
+        env: sortJson(process.env)
+      };
+      res.render(`${__dirname}/views/home`, dataForView);
+      
+    } catch (error) {
+
+      // Failure - View
+      res.render(`${__dirname}/views/home`, { error })
+    }
   });
 
   // Access token from injected header

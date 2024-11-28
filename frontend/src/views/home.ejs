@@ -15,7 +15,26 @@
 
 <body>
 
-  <h1>Easy auth - Get Profile from API server - 1</h1>
+  <h1>Easy auth sample application</h1>
+  <br><br>
+  <% if (error) { %>
+
+    <h3>Error</h3>
+    <p>
+        <%= error %>
+    </p>
+
+    <% } else { %>
+
+      <h3>Access token</h3>
+      <p>
+          <div><%= user %></div>
+          <div><%= scope %></div>
+          <%= accessToken %>
+      </p>
+    <% }  %>
+        <br><br>
+
 
   <p><a href="/get-profile">Get user's profile</a> from server API</p>
   <br><br><br><br>
