@@ -14,14 +14,7 @@
 </style>
 
 <body>
-  <script>
-    if (accessToken){
-      document.getElementById("content").innerHTML = `<p>Welcome, ${user}!</p>`;
-    } else {
-      document.getElementById("content").innerHTML = `<p>Please log in.</p>`;
-    }
-  </script>
-  <h1>Easy auth sample application</h1>
+  <h1 style="background-color: blue;color: white;line-height:300%">Easy auth sample application</h1>
   <br><br>
   <% if (error) { %>
 
@@ -30,19 +23,21 @@
         <%= error %>
     </p>
 
-    <% } else {  %>
+    <% } if(accessToken) {  %>
 
       <h3>Bearer token</h3>
       <p>
-          <div><%= user %></div>
-          <div><%= scope %></div>
-          <%= accessToken %>
+        <div><%= user %></div>
+        <div><%= scope %></div>
+        <%= accessToken %>
       </p>
-    <% }  %>
+    <% } else { %>
+      <h3>App Service Authentication is not enabled !</h3>
+      <% } %>
         <br><br>
 
 
-  <p><a href="/get-profile">Get user's profile</a> from server API</p>
+  <!--<p><a href="/get-profile">Get user's profile</a> from server API</p>-->
   <br><br><br><br>
   <div class="resources">
     <details>
