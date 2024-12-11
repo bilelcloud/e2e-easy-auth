@@ -25,14 +25,10 @@
 
     <% } if(accessToken) {  %>
 
-      <h3>Bearer token</h3>
-      <p>
-        <div><%= user %></div>
-        <div><%= scope %></div>
-        <%= accessToken %>
-      </p>
+      <h3>App Service Authentication <span style="color: #026412"> enabled !</span></h3>
+
     <% } else { %>
-      <h3>App Service Authentication is not enabled !</h3>
+      <h3>App Service Authentication is <span style="color: #ff0000">NOT enabled !</span></h3>
       <% } %>
         <br><br>
 

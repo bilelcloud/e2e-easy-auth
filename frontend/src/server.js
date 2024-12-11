@@ -123,7 +123,7 @@ export const create = async () => {
 
       // Get access token from injected header
       const accessToken = req.headers['x-ms-token-aad-access-token'];
-      console.log(`accessToken: ${accessToken}`)
+      console.log(`frontend server.js accessToken: ${accessToken}`)
       
       const authEnabled = process.env.APPSETTING_WEBSITE_AUTH_ENABLED==='true' ? true : false;
       if (authEnabled && !accessToken) {
