@@ -25,15 +25,25 @@
 
     <% } if(accessToken) {  %>
 
-      <h3>App Service Authentication <span style="color: #026412"> enabled !</span></h3>
-
+      <h3>User <%= user %> is <span style="color: green"> Authenticated </span></h3>
+      <p>Get user's profile from server API  
+      <a href="/get-profile">
+        <button style="background-color: blue;line-height:150%;border: 2px solid black;color: white;padding: 10px, 15px;">
+          Click here
+        </button></a></h3>
+      </p>
     <% } else { %>
-      <h3>App Service Authentication is <span style="color: #ff0000">NOT enabled !</span></h3>
+      <p>Please sign in to access Backend services</p>
+      <h3><a href="/.auth/login/aad?post_login_redirect_uri=/">
+        <button style="background-color: blue;border: 2px solid black;color: white;padding: 10px, 15px;">
+          SIGN IN
+        </button></a></h3>
+      <!--<h3>Please si <span style="color: #ff0000">NOT enabled !</span></h3>-->
       <% } %>
         <br><br>
 
 
-  <p><a href="/get-profile">Get user's profile</a> from server API</p>
+
   <br><br><br><br>
   <div class="resources">
     <details>
