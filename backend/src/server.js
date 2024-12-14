@@ -38,7 +38,6 @@ export const create = async () => {
 
       const profile = {
         "displayName": "John Doe",
-        "Current date": date.toLocaleString(),
         // return true if we have an access token
         "withAuthentication": false
       }
